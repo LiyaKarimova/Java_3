@@ -26,8 +26,8 @@ public class Car implements Runnable {
             System.out.println(this.name + " готовится");
             Thread.sleep(500 + (int)(Math.random() * 800));
             System.out.println(this.name + " готов");
-            Barriers.cdlStart.countDown();
-            Barriers.cyclicBarrier.await();
+            Barriers.getInstance().getCdlStart().countDown();
+            Barriers.getInstance().getCyclicBarrier().await();
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -40,7 +40,7 @@ public class Car implements Runnable {
         //else {
 //            System.out.println(this.getName() + " FINISH");
 //        }
-        Barriers.cdlFinal.countDown();
+        Barriers.getInstance().getCdlFinal().countDown();
 
     }
 }

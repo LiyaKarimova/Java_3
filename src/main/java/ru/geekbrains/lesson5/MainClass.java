@@ -23,14 +23,13 @@ public class MainClass {
         for (int i = 0; i < cars.length; i++) {
             cars[i] = new Car (race, 20 + (int) (Math.random() * 10));
         }
-        Barriers barriers = new Barriers();
 
         for (int i = 0; i < cars.length; i++) {
             new Thread (cars[i]).start();
     }
-        Barriers.cdlStart.await();
+        Barriers.getInstance().getCdlStart().await();
         System.out.println("ВАЖНОЕ ОБЪЯВЛЕНИЕ >>> Гонка началась!!!");
-        Barriers.cdlFinal.await();
+        Barriers.getInstance().getCdlFinal().await();
         System.out.println("ВАЖНОЕ ОБЪЯВЛЕНИЕ >>> Гонка закончилась!!!");
 }
 }
